@@ -1,8 +1,7 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
+    DEVELOP BY CARLOS BEDOY
+    MOBILE AND WEB DEVELOPER
+    carlos.bedoy@gmail.com
 """
 
 from django.test import TestCase
