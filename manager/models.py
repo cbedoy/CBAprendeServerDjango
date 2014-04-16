@@ -1,8 +1,31 @@
 from django.db import models
 
-# Create your models here.
+"""
+    DEVELOP BY CARLOS BEDOY
+    MOBILE AND WEB DEVELOPER
+    carlos.bedoy@gmail.com
+"""
 
-class question(models.Model):
+
+class Course(models.Model):
+    name = models.CharField(max_length=45, help_text='name of course')
+    description = models.TextField(max_length=100)
+    image = models.ImageField(upload_to='courses_image', null=True, help_text='image of course')
+
+    def __unicode__(self):
+        return self.name
+
+
+class Theme(models.Model):
+    name = models.CharField(max_length=50, help_text='Algorithms')
+    description = models.TextField(max_length=100, help_text='short description about theme')
+    course = models.ForeignKey(Course)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Question(models.Model):
     option_list = (
         (1, 'A)'),
         (2, 'B)'),
@@ -17,41 +40,12 @@ class question(models.Model):
     correct = models.IntegerField(choices=option_list, help_text='correct answer :p')
     feedback = models.TextField(max_length=200, help_text='everythin')
     source = models.ImageField(upload_to='sources', help_text='image resource for examen', null=True)
+    theme = models.ForeignKey(Theme)
 
     def __unicode__(self):
-        return self.question
+        return self.question + self._get_pk_val
 
-
-class course(models.Model):
-    name = models.CharField(max_length=45, help_text='name of course')
-    image = models.ImageField(upload_to='courses_image', null=True, help_text='image of course')
-
-    def __unicode__(self):
-        return self.name
-
-
-class theme(models.Model):
-    name = models.CharField(max_length=50, help_text='Algorithms')
-    description = models.TextField(max_length=100, help_text='short description about theme')
-    course = models.ForeignKey(course)
-
-    def __unicode__(self):
-        return self.name
-
-
-class stadistics(models.Model):
-    level = models.IntegerField(help_text='quantity of questions')
-    correct = models.IntegerField(help_text='number of corrects :D')
-    wrongs = models.IntegerField(help_text='wrongs :(')
-    points = models.FloatField(help_text='number of points')
-    date = models.DateField(help_text='date created')
-    unicode(date)
-
-    def __unicode__(self):
-        return self._get_pk_val + ' -> ' + self.date
-
-
-class user(models.Model):
+class User(models.Model):
     username = models.CharField(max_length=45, help_text='for example carlos.bedoy@gmail.com')
     password = models.CharField(max_length=45, help_text='nomeacuerdo password')
     first_name = models.CharField(max_length=45, help_text='yesica')
@@ -65,6 +59,20 @@ class user(models.Model):
 
     def __unicode__(self):
         return self.username
+
+
+class Statistics(models.Model):
+    level = models.IntegerField(help_text='quantity of questions')
+    correct = models.IntegerField(help_text='number of corrects :D')
+    wrongs = models.IntegerField(help_text='wrongs :(')
+    points = models.FloatField(help_text='number of points')
+    date = models.DateField(help_text='date created')
+    player = models.ForeignKey(User)
+    unicode(date)
+
+    def __unicode__(self):
+        return self._get_pk_val + ' -> ' + self.date
+
 
 
 

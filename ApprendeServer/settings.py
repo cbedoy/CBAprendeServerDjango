@@ -1,22 +1,22 @@
-# Django settings for ApprendeServer project.
+"""
+    DEVELOP BY CARLOS BEDOY
+    MOBILE AND WEB DEVELOPER
+    carlos.bedoy@gmail.com
+"""
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('admin', 'carlos.bedoy@gmail.com'),
+    ('admin', 'carlos.bedoy@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',     # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'apprende.db',                      # Or path to database file if using sqlite3.
-       # 'USER': '',                      # Not used with sqlite3.
-       # 'PASSWORD': '',                  # Not used with sqlite3.
-       # 'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-       # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 

@@ -1,10 +1,14 @@
-__author__ = 'Carlos'
+"""
+    DEVELOP BY CARLOS BEDOY
+    MOBILE AND WEB DEVELOPER
+    carlos.bedoy@gmail.com
+"""
 
 from django.contrib import admin
 from .models import *
 
-admin.site.register(question)
-admin.site.register(user)
-admin.site.register(theme)
-admin.site.register(course)
-admin.site.register(stadistics)
+admin.site.register(Question)
+admin.site.register(User)
+admin.site.register(Theme)
+admin.site.register(Course)
+admin.site.register(Statistics)
