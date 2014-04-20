@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jquery.mobile.flatui.css" />
+    <script src="{{STATIC_URL}}js/jquery.min.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.mobile-1.3.1.min.js"></script>
+</head>
+<body>
+<div data-role="page">
+
+<div data-role="panel" id="options" data-position="left" data-display="overlay" data-position-fixed="true">
+    <h3>Apprende Admin</h3>
+    <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+        <h3>Agregar</h3>
+             <ul data-role="listview" data-theme="a" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                 <li><a href="/apprende/user/new">Usuario</a></li>
+                 <li><a href="/apprende/question/new">Pregunta</a></li>
+                 <li><a href="/apprende/theme/new">Tema</a></li>
+                 <li><a href="/apprende/course/new">Curso</a></li>
+             </ul>
+     </div>
+    <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+        <h3>Listar</h3>
+             <ul data-role="listview" data-theme="a" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                 <li><a href="/apprende/user/new">Usuario</a></li>
+                 <li><a href="/apprende/question/new">Pregunta</a></li>
+                 <li><a href="/apprende/theme/new">Tema</a></li>
+                 <li><a href="/apprende/course/new">Curso</a></li>
+                 <li><a href="/apprende/statistics/new">Estadisticas</a></li>
+             </ul>
+     </div>
+    <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+        <h3>JSON Response</h3>
+             <ul data-role="listview" data-theme="a" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                 <li><a href="/apprende/user/get">Usuario</a></li>
+                 <li><a href="/apprende/question/get">Pregunta</a></li>
+                 <li><a href="/apprende/theme/get">Tema</a></li>
+                 <li><a href="/apprende/course/get">Curso</a></li>
+                 <li><a href="/apprende/statistics/get">Estadisticas</a></li>
+             </ul>
+     </div>
+    <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+         <h3>Ayuda</h3>
+             <ul data-role="listview" data-theme="a" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                 <li><a href="#">PandaMobile</a></li>
+                 <li><a href="#">FAQ</a></li>
+             </ul>
+     </div>
+</div>
+
+
+  <div data-role="header" data-theme="b">
+      <h1>{% block header %}{% endblock %}</h1>
+	  <a href="#options" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	  <a href="#" data-icon="search" data-iconpos="notext" data-rel="dialog" data-transition="fade">Search</a>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    {% block content%}{% endblock %}
+  </div>
+
+
+  <div data-role="footer" data-theme="d">
+    <h1>{% block footer%}{% endblock %}</h1>
+  </div>
+</div>
+</body>
+</html>

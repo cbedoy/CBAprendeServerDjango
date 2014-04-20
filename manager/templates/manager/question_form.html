@@ -1,0 +1,44 @@
+{% extends  "base.html" %}
+{% block header%}Apprende - New Question ♥{% endblock %}
+{% block content %}
+
+<form method="post"  class="basic-grey">
+    <fieldset>
+        {% csrf_token %}
+        {% for object in form %}
+            <div data-role="fieldcontain">
+                 {{ object.errors }}
+	             {{ object.label_tag  }}
+                 {{ object  }}
+            </div>
+        {% endfor %}
+        <div class="ui-body ui-body-a">
+		<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button type="reset" data-theme="d">Limpiar</button></div>
+				<div class="ui-block-b"><button type="submit" data-theme="a">Añadir</button></div>
+	    </fieldset>
+		</div>
+    </fieldset>
+</form>
+
+        <script >
+            $(document).ready(function(){
+                $('#id_question').              attr('placeholder', '2 días antes de después de pasado mañana ');
+                $('#id_answer1').               attr('placeholder', 'hoy...);
+                $('#id_answer2').               attr('placeholder', 'mañana...);
+                $('#id_answer3').               attr('placeholder', 'Mañana...);
+                $('#id_answer4').               attr('placeholder', 'ayer...);
+                $('#id_feedback').              attr('placeholder', 'No te diremos la respuesta');
+                $("label[for='id_question']").  text('Pregunta');
+                $("label[for='id_answer1']").   text('Respuesta A)');
+                $("label[for='id_answer2']").   text('Respuesta B)');
+                $("label[for='id_answer3']").   text('Respuesta C)');
+                $("label[for='id_answer4']").   text('Respuesta D)');
+                $("label[for='id_correct']").   text('Correcta');
+                $("label[for='id_feedback']").  text('Retroalimentacion');
+                $("label[for='id_theme']").     text('Seleccione tipo');
+            });
+    </script>
+
+{% endblock %}
+{% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}

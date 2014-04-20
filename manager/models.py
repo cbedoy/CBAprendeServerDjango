@@ -10,7 +10,6 @@ from django.db import models
 class Course(models.Model):
     name = models.CharField(max_length=45, help_text='name of course')
     description = models.TextField(max_length=100)
-    image = models.ImageField(upload_to='courses_image', null=True, help_text='image of course')
 
     def __unicode__(self):
         return self.name
@@ -39,11 +38,12 @@ class Question(models.Model):
     answer4 = models.TextField(max_length=200, help_text='Yes django music lol')
     correct = models.IntegerField(choices=option_list, help_text='correct answer :p')
     feedback = models.TextField(max_length=200, help_text='everythin')
-    source = models.ImageField(upload_to='sources', help_text='image resource for examen', null=True)
+
     theme = models.ForeignKey(Theme)
 
     def __unicode__(self):
-        return self.question + self._get_pk_val
+        return self.question
+
 
 class User(models.Model):
     username = models.CharField(max_length=45, help_text='for example carlos.bedoy@gmail.com')
@@ -51,7 +51,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=45, help_text='yesica')
     last_name = models.CharField(max_length=45, help_text='martinez')
     birthday = models.DateField(help_text='your birthday is important')
-    image = models.ImageField(upload_to='user_images', help_text='selfie :v')
     age = models.IntegerField(help_text='you age lol')
     points = models.FloatField(help_text='how many points')
     plays = models.IntegerField(help_text='you are junior?')

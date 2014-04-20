@@ -3,9 +3,14 @@
     MOBILE AND WEB DEVELOPER
     carlos.bedoy@gmail.com
 """
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import ListView
+from django.db import connection
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from .models import *
 from django.http import HttpResponse
-
-from models import *
 from django.core import serializers
 
 
@@ -39,3 +44,74 @@ def questions(request):
     return HttpResponse(json, mimetype='application/json')
 
 
+
+
+"""
+
+        WEP APP <3
+
+"""
+
+
+class QuestionList(ListView):
+    model = Question
+
+
+class UserList(ListView):
+    model = User
+
+
+class ThemeList(ListView):
+    model = Theme
+
+
+class CourseList(ListView):
+    model = Course
+
+
+class StatisticList(ListView):
+    model = Statistics
+
+
+class QuestionCreate(CreateView):
+    model = Question
+
+
+class UserCreate(CreateView):
+    model = User
+
+
+class CourseCreate(CreateView):
+    model = Course
+
+
+class ThemeCreate(CreateView):
+    model = Theme
+
+
+class QuestionEdit(UpdateView):
+    model = Question
+
+
+class UserEdit(UpdateView):
+    model = User
+
+
+class ThemeEdit(UpdateView):
+    model = Theme
+
+
+class CourseEdit(UpdateView):
+    model = Course
+
+
+class QuestionDelete(DeleteView):
+    model = Question
+
+
+class CourseDelete(DeleteView):
+    model = Course
+
+
+class ThemeDelete(DeleteView):
+    model = Theme

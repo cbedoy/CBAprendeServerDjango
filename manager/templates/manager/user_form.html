@@ -1,0 +1,29 @@
+{% extends  "base.html" %}
+{% block header%}Apprende - New Question ♥{% endblock %}
+{% block content %}
+
+<form method="post"  class="basic-grey">
+    <fieldset>
+        {% csrf_token %}
+        {% for object in form %}
+            <div data-role="fieldcontain">
+                 {{ object.errors }}
+	             {{ object.label_tag  }}
+                 {{ object  }}
+            </div>
+        {% endfor %}
+        <div class="ui-body ui-body-a">
+		<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button type="reset" data-theme="d">Limpiar</button></div>
+				<div class="ui-block-b"><button type="submit" data-theme="a">Añadir</button></div>
+	    </fieldset>
+		</div>
+    </fieldset>
+</form>
+
+        <script >
+
+    </script>
+
+{% endblock %}
+{% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}
