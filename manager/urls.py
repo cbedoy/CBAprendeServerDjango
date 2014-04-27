@@ -18,22 +18,22 @@ urlpatterns = [
     url(r'^theme/new', views.ThemeCreate.as_view(), name='theme_new'),
     url(r'^user/new', views.UserCreate.as_view(), name='user_new'),
     url(r'^question/new', views.QuestionCreate.as_view(), name='question_new'),
-    url(r'^courses/new', views.CourseCreate.as_view(), name='course_new'),
+    url(r'^course/new', views.CourseCreate.as_view(), name='course_new'),
 
     url(r'^theme/delete/(?P<pk>\d+)$', views.ThemeDelete.as_view(), name='theme_delete'),
     url(r'^course/delete/(?P<pk>\d+)$', views.CourseDelete.as_view(), name='course_delete'),
     url(r'^question/delete/(?P<pk>\d+)$', views.QuestionDelete.as_view(), name='question_delete'),
 
-    url(r'^theme/edit/(?P<pk>\d+)$', views.ThemeEdit.as_view(), name='theme_delete'),
-    url(r'^course/edit/(?P<pk>\d+)$', views.CourseEdit.as_view(), name='course_delete'),
-    url(r'^question/edit/(?P<pk>\d+)$', views.QuestionEdit.as_view(), name='question_delete'),
-    url(r'^user/edit/(?P<pk>\d+)$', views.UserEdit.as_view(), name='user_delete'),
+    url(r'^theme/edit/(?P<pk>\d+)$', views.ThemeEdit.as_view(), name='theme_edit'),
+    url(r'^course/edit/(?P<pk>\d+)$', views.CourseEdit.as_view(), name='course_edit'),
+    url(r'^question/edit/(?P<pk>\d+)$', views.QuestionEdit.as_view(), name='question_edit'),
+    url(r'^user/edit/(?P<pk>\d+)$', views.UserEdit.as_view(), name='user_edit'),
 
     url(r'^theme/list', views.ThemeList.as_view(), name='theme_list'),
     url(r'^user/list', views.UserList.as_view(), name='user_list'),
     url(r'^question/list', views.QuestionList.as_view(), name='question_list'),
-    url(r'^statistics/list', views.StatisticList.as_view(), name='statistics_list'),
-    url(r'^courses/list', views.CourseList.as_view(), name='course_list'),
+    url(r'^statistic/list', views.StatisticList.as_view(), name='statistics_list'),
+    url(r'^course/list', views.CourseList.as_view(), name='course_list'),
 
 
 

@@ -1,0 +1,9 @@
+{% extends  "base.html" %}
+{% block header%}Apprende - Question Delete ♦{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    Are you sure you want to delete Question: "{{ object }}" ?
+    <input type="submit" value="OK" />
+</form>
+{% endblock %}
+{% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}

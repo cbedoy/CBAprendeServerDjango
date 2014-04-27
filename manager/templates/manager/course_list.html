@@ -1,0 +1,32 @@
+{% extends  "base.html" %}
+{% block header%}Apprende - Course List ♥{% endblock %}
+{% block content %}
+<center>
+<table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+			<thead>
+				<tr>
+					<th data-priority="1">#</th>
+					<th data-priority="2">Name </th>
+					<th data-priority="3">Description</th>
+                     <th data-priority="8">Edit</th>
+                     <th data-priority="8">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+     {% for o in object_list %}
+        <tr>
+           <th>{{o.id}}</th>
+          <th>{{o.name}}</th>
+          <td>{{o.description}}</td>
+          <td><a href="{% url course_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+          <td><a href="{% url course_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+        </tr>
+    {% endfor %}
+        <tbody>
+    </table>
+
+        <br>
+<a href="{% url course_new %}" data-role="button" data-icon="plus" data-inline="true"  >Go to New Course form</a>
+    </center>
+{% endblock %}
+{% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}
