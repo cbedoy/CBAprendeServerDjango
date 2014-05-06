@@ -70,7 +70,7 @@ class Statistics(models.Model):
     unicode(date)
 
     def __unicode__(self):
-        return self._get_pk_val + ' -> ' + self.date
+        return unicode(self.date)
 
 
 

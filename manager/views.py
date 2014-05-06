@@ -69,7 +69,7 @@ class CourseList(ListView):
     model = Course
 
 
-class StatisticList(ListView):
+class StatisticsList(ListView):
     model = Statistics
 
 
