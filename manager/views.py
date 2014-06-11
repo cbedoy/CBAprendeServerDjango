@@ -44,7 +44,28 @@ def questions(request):
     return HttpResponse(json, mimetype='application/json')
 
 
+"""
+    WEB SERVICES
 
+"""
+
+
+def user_info(request, _id):
+    data = User.objects.get(pk=_id)
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def exam(request, _level):
+    data = Question.objects.order_by('?')[:_level]
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def user_ranks(request):
+    data = User.objects.order_by('points')
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
 
 """
 

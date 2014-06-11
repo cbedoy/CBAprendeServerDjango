@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'^statistic/get/$', 'manager.views.statistics'),
     url(r'^course/get/$', 'manager.views.courses'),
 
+    url(r'^user_rank/get', 'manager.views.user_ranks'),
+    url(r'^exam/get/', 'manager.views.user_ranks'),
+    url(r'^user_rank/get', 'manager.views.user_ranks'),
 
     url(r'^theme/new', views.ThemeCreate.as_view(), name='theme_new'),
     url(r'^user/new', views.UserCreate.as_view(), name='user_new'),
@@ -34,7 +37,6 @@ urlpatterns = [
     url(r'^question/list', views.QuestionList.as_view(), name='question_list'),
     url(r'^statistic/list', views.StatisticList.as_view(), name='statistics_list'),
     url(r'^course/list', views.CourseList.as_view(), name='course_list'),
-
 
 
 
