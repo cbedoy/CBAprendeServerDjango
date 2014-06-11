@@ -2,7 +2,7 @@
 {% block header%}Apprende - Question List ♥{% endblock %}
 {% block content %}
 <center>
-<table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+<table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke" border="1" style="border-color:#fff">
 			<thead>
 				<tr>
 					<th data-priority="1">#</th>
@@ -14,18 +14,34 @@
                     <th data-priority="7">Correct Answer</th>
                     <th data-priority="8">Feedback</th>
                     <th data-priority="9">Theme</th>
-                     <th data-priority="8">Edit</th>
-                     <th data-priority="8">Delete</th>
+                     <th data-priority="10">Edit</th>
+                     <th data-priority="11">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-
-
-
 				</tr>
                 </tbody>
+     {% for o in object_list %}
+        <tr>
+          <th>{{o.id}}</th>
+          <th>{{o.question}}</th>
+          <td>{{o.answer1}}</td>
+          <td>{{o.answer2}}</td>
+          <td>{{o.answer3}}</td>
+          <td>{{o.answer4}}</td>
+          <td>{{o.correct}}</td>
+          <td>{{o.feedback}}</td>
+          <td>{{o.theme}}</td>
+          <td><a href="{% url question_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+          <td><a href="{% url question_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+        </tr>
+    {% endfor %}
+        <tbody>
     </table>
-</center>
+
+        <br>
+<a href="{% url question_new %}" data-role="button" data-icon="plus" data-inline="true"  >New Question</a>
+    </center>
 {% endblock %}
 {% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}

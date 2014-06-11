@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^theme/list', views.ThemeList.as_view(), name='theme_list'),
     url(r'^user/list', views.UserList.as_view(), name='user_list'),
     url(r'^question/list', views.QuestionList.as_view(), name='question_list'),
-    url(r'^statistic/list', views.StatisticList.as_view(), name='statistics_list'),
+    url(r'^statistic/list', views.StatisticsList.as_view(), name='statistics_list'),
     url(r'^course/list', views.CourseList.as_view(), name='course_list'),
 
 

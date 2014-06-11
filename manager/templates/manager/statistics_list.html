@@ -1,0 +1,36 @@
+{% extends  "base.html" %}
+{% block header%}Apprende - Statistics List ♥{% endblock %}
+{% block content %}
+<center>
+<table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+			<thead>
+				<tr>
+					<th data-priority="1">#</th>
+					<th data-priority="2">Level</th>
+					<th data-priority="3">Corrects</th>
+					<th data-priority="4">Wrongs</th>
+					<th data-priority="5">Points</th>
+                    <th data-priority="6">Date</th>
+                    <th data-priority="7">Player</th>
+
+				</tr>
+			</thead>
+			<tbody>
+     {% for o in object_list %}
+        <tr>
+           <th>{{o.id}}</th>
+          <th>{{o.level}}</th>
+          <td>{{o.correct}}</td>
+            <td>{{o.wrongs}}</td>
+            <td>{{o.points}}</td>
+            <td>{{o.date}}</td>
+            <td>{{o.player}}</td>
+          </tr>
+    {% endfor %}
+        <tbody>
+    </table>
+
+        <br>
+    </center>
+{% endblock %}
+{% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}

@@ -16,14 +16,25 @@
                      <th data-priority="9">Edit</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-
-
-
-				</tr>
-                </tbody>
+</tbody>
+     {% for o in object_list %}
+        <tr>
+          <th>{{o.id}}</th>
+          <th>{{o.username}}</th>
+          <td>{{o.first_name}}</td>
+          <td>{{o.last_name}}</td>
+          <td>{{o.birthday}}</td>
+          <td>{{o.age}}</td>
+          <td>{{o.points}}</td>
+          <td>{{o.plays}}</td>
+          <td><a href="{% url user_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+                  </tr>
+    {% endfor %}
+        <tbody>
     </table>
-</center>
+
+        <br>
+<a href="{% url user_new %}" data-role="button" data-icon="plus" data-inline="true"  >New User</a>
+    </center>
 {% endblock %}
 {% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}

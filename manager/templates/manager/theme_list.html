@@ -13,13 +13,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-
-
-
-				</tr>
-                </tbody>
+     {% for o in object_list %}
+        <tr>
+           <th>{{o.id}}</th>
+          <th>{{o.name}}</th>
+          <td>{{o.description}}</td>
+          <td><a href="{% url theme_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+          <td><a href="{% url theme_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+        </tr>
+    {% endfor %}
+        <tbody>
     </table>
-</center>
+
+        <br>
+<a href="{% url theme_new %}" data-role="button" data-icon="plus" data-inline="true"  >New Theme</a>
+    </center>
 {% endblock %}
 {% block footer%}Develop by Carlos Bedoy | PandaMobile ® 2014{% endblock %}
