@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^statistic/get/$', 'manager.views.statistics'),
     url(r'^course/get/$', 'manager.views.courses'),
 
+    url(r'^user/get/(?P<username>\w{0,50})/(?P<password>\w{0,50})/$', 'manager.views.user_info'),
     url(r'^user_rank/get', 'manager.views.user_ranks'),
     url(r'^exam/get/', 'manager.views.user_ranks'),
     url(r'^user_rank/get', 'manager.views.user_ranks'),

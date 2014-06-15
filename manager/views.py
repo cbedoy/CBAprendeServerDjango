@@ -50,9 +50,9 @@ def questions(request):
 """
 
 
-def user_info(request, _id):
-    data = User.objects.get(pk=_id)
-    json = serializers.serialize('json', data)
+def user_info(request, username, password):
+    data = User.objects.filter(username = username, password = password)
+    json = serializers.serialize('json', data, indent=4)
     return HttpResponse(json, mimetype='application/json')
 
 
