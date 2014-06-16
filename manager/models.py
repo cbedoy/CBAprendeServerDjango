@@ -45,16 +45,23 @@ class Question(models.Model):
         return self.question
 
 
+class University(models.Model):
+    name = models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return self.name
+
+
 class User(models.Model):
     username = models.CharField(max_length=45, help_text='for example carlos.bedoy@gmail.com')
     password = models.CharField(max_length=45, help_text='nomeacuerdo password')
     first_name = models.CharField(max_length=45, help_text='yesica')
     last_name = models.CharField(max_length=45, help_text='martinez')
-    birthday = models.DateField(help_text='your birthday is important')
+    facebook = models.CharField(max_length=100, null=True, help_text='carlos.bedoy')
+    twitter = models.CharField(max_length=100, null=True, help_text='@carlos_bedoy')
     age = models.IntegerField(help_text='you age lol')
     points = models.FloatField(help_text='how many points')
     plays = models.IntegerField(help_text='you are junior?')
-    unicode(birthday)
 
     def __unicode__(self):
         return self.username
@@ -73,6 +80,8 @@ class Statistics(models.Model):
         return unicode(self.date)
 
 
-
+class Guy(models.Model):
+    user = models.ForeignKey(User, related_name='idA')
+    friend = models.ForeignKey(User, related_name='idB')
 
 

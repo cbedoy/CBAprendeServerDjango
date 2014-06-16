@@ -15,7 +15,7 @@ from django.core import serializers
 
 
 def themes(request):
-    data = Theme.objects.all()
+    data = Theme.objects.select_related().order_by('course')
     json = serializers.serialize('json', data)
     return HttpResponse(json, mimetype='application/json')
 
@@ -51,7 +51,14 @@ def questions(request):
 
 
 def user_info(request, username, password):
-    data = User.objects.filter(username = username, password = password)
+    data = User.objects.filter(username=username, password=password)
+
+    json = serializers.serialize('json', data, indent=4)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def user_new(request, username, password):
+    data = User.objects.filter(username=username, password=password)
     json = serializers.serialize('json', data, indent=4)
     return HttpResponse(json, mimetype='application/json')
 
