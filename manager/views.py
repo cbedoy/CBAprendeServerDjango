@@ -12,6 +12,7 @@ from django.shortcuts import render_to_response
 from .models import *
 from django.http import HttpResponse
 from django.core import serializers
+import datetime
 
 
 def themes(request):
@@ -26,8 +27,14 @@ def courses(request):
     return HttpResponse(json, mimetype='application/json')
 
 
+def university(request):
+    data = University.objects.all()
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
+
+
 def users(request):
-    data = User.objects.all()
+    data = User.objects.all().order_by('-points')
     json = serializers.serialize('json', data)
     return HttpResponse(json, mimetype='application/json')
 
@@ -50,6 +57,14 @@ def questions(request):
 """
 
 
+def feed_new(request, level, correct, wrongs, points, player):
+    data = Statistics(level=level, correct=correct, wrongs=wrongs,
+                      points=points, date=datetime.date.now(), player=player)
+    data.save()
+    json = serializers.serialize('json', data, indent=4)
+    return HttpResponse(json, mimetype='application/json')
+
+
 def user_info(request, username, password):
     data = User.objects.filter(username=username, password=password)
 
@@ -57,14 +72,22 @@ def user_info(request, username, password):
     return HttpResponse(json, mimetype='application/json')
 
 
-def user_new(request, username, password):
-    data = User.objects.filter(username=username, password=password)
+def user_new(request, username, password, firstName, lastName, university, facebook, twitter, age):
+    data = User(username=username, password=password, firstName=firstName, lastName=lastName,
+                university=university, facebook=facebook, twitter=twitter, age=age)
+    data.save()
     json = serializers.serialize('json', data, indent=4)
     return HttpResponse(json, mimetype='application/json')
 
 
-def exam(request, _level):
-    data = Question.objects.order_by('?')[:_level]
+def exam_theme_level(request, theme, level):
+    data = Question.objects.filter(theme=theme).order_by('?')[:level]
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def exam_random(request, level):
+    data = Question.objects.order_by('?')[:level]
     json = serializers.serialize('json', data)
     return HttpResponse(json, mimetype='application/json')
 

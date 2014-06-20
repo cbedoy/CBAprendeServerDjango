@@ -62,6 +62,7 @@ class User(models.Model):
     age = models.IntegerField(help_text='you age lol')
     points = models.FloatField(help_text='how many points')
     plays = models.IntegerField(help_text='you are junior?')
+    university = models.ForeignKey(University)
 
     def __unicode__(self):
         return self.username
@@ -80,8 +81,5 @@ class Statistics(models.Model):
         return unicode(self.date)
 
 
-class Guy(models.Model):
-    user = models.ForeignKey(User, related_name='idA')
-    friend = models.ForeignKey(User, related_name='idB')
 
 
