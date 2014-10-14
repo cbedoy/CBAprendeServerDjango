@@ -8,6 +8,7 @@ from django.db import models
 
 
 class Course(models.Model):
+    thumbnail = models.ImageField(upload_to='media/course_imgs/', default='media/course_imgs/None/no-img.jpg')
     name = models.CharField(max_length=45, help_text='name of course')
     description = models.TextField(max_length=100)
 
@@ -16,6 +17,7 @@ class Course(models.Model):
 
 
 class Theme(models.Model):
+    thumbnail = models.ImageField(upload_to='media/theme_imgs/', default='media/course_imgs/None/no-img.jpg')
     name = models.CharField(max_length=50, help_text='Algorithms')
     description = models.TextField(max_length=100, help_text='short description about theme')
     course = models.ForeignKey(Course)
@@ -53,6 +55,7 @@ class University(models.Model):
 
 
 class User(models.Model):
+    thumbnail = models.ImageField(upload_to='media/user_imgs/', default='media/course_imgs/None/no-img.jpg')
     username = models.CharField(max_length=45, help_text='for example carlos.bedoy@gmail.com')
     password = models.CharField(max_length=45, help_text='nomeacuerdo password')
     first_name = models.CharField(max_length=45, help_text='yesica')
