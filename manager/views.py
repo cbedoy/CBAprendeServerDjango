@@ -27,12 +27,6 @@ def courses(request):
     return HttpResponse(json, mimetype='application/json')
 
 
-def university(request):
-    data = University.objects.all()
-    json = serializers.serialize('json', data)
-    return HttpResponse(json, mimetype='application/json')
-
-
 def users(request):
     data = User.objects.all().order_by('-points')
     json = serializers.serialize('json', data)
@@ -72,9 +66,9 @@ def user_info(request, username, password):
     return HttpResponse(json, mimetype='application/json')
 
 
-def user_new(request, username, password, firstName, lastName, university, facebook, twitter, age):
+def user_new(request, username, password, firstName, lastName, facebook, twitter, age):
     data = User(username=username, password=password, firstName=firstName, lastName=lastName,
-                university=university, facebook=facebook, twitter=twitter, age=age)
+                facebook=facebook, twitter=twitter, age=age)
     data.save()
     json = serializers.serialize('json', data, indent=4)
     return HttpResponse(json, mimetype='application/json')

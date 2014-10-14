@@ -13,10 +13,9 @@ urlpatterns = [
     url(r'^question/get/$', 'manager.views.questions'),
     url(r'^statistic/get/$', 'manager.views.statistics'),
     url(r'^course/get/$', 'manager.views.courses'),
-    url(r'^university/get/$', 'manager.views.university'),
 
     url(r'^user/get/(?P<username>\w{0,50})/(?P<password>\w{0,50})/$', 'manager.views.user_info'),
-    url(r'^user/add/(?P<username>\w{0,50})/(?P<password>\w{0,50})/(?P<firstName>\w{0,50})/(?P<lastName>\w{0,50})/(?P<facebook>\w{0,50})/(?P<twitter>\w{0,50})/(?P<age>\w{0,50})/(?P<university>\w{0,50})$', 'manager.views.user_new'),
+    url(r'^user/add/(?P<username>\w{0,50})/(?P<password>\w{0,50})/(?P<firstName>\w{0,50})/(?P<lastName>\w{0,50})/(?P<facebook>\w{0,50})/(?P<twitter>\w{0,50})/(?P<age>\w{0,50}))$', 'manager.views.user_new'),
     url(r'^user_rank/get', 'manager.views.user_ranks'),
     url(r'^exam/get/(?P<theme>\w{0,50})/(?P<level>\w{0,50})/', 'manager.views.exam_theme_level'),
     url(r'^exam/get/(?P<level>\w{0,50})/', 'manager.views.exam_random'),
