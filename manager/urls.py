@@ -14,11 +14,28 @@ urlpatterns = [
     url(r'^statistic/get/$', 'manager.views.statistics'),
     url(r'^course/get/$', 'manager.views.courses'),
 
-    url(r'^user/get/(?P<username>\w{0,50})/(?P<password>\w{0,50})/$', 'manager.views.user_info'),
-    url(r'^user/add/(?P<username>\w{0,50})/(?P<password>\w{0,50})/(?P<firstName>\w{0,50})/(?P<lastName>\w{0,50})/(?P<facebook>\w{0,50})/(?P<twitter>\w{0,50})/(?P<age>\w{0,50}))$', 'manager.views.user_new'),
+    url(r'^user/get/'
+        r'(?P<username>\w{0,50})/'
+        r'(?P<password>\w{0,50})/$', 'manager.views.user_info'),
+
+    url(r'^user/add/'
+        r'(?P<username>\w{0,50})/'
+        r'(?P<password>\w{0,50})/'
+        r'(?P<firstName>\w{0,50})/'
+        r'(?P<lastName>\w{0,50})/'
+        r'(?P<facebook>\w{0,50})/'
+        r'(?P<twitter>\w{0,50})/'
+        r'(?P<age>\w{0,50})$', 'manager.views.user_new'),
+
     url(r'^user_rank/get', 'manager.views.user_ranks'),
-    url(r'^exam/get/(?P<theme>\w{0,50})/(?P<level>\w{0,50})/', 'manager.views.exam_theme_level'),
-    url(r'^exam/get/(?P<level>\w{0,50})/', 'manager.views.exam_random'),
+
+    url(r'^exam/get/'
+        r'(?P<theme>\w{0,50})/'
+        r'(?P<level>\w{0,50})/', 'manager.views.exam_theme_level'),
+
+    url(r'^exam/get/'
+        r'(?P<level>\w{0,50})/', 'manager.views.exam_random'),
+
     url(r'^user_rank/get', 'manager.views.user_ranks'),
 
     url(r'^feed/new', 'manager.views.feed_new'),
@@ -43,8 +60,5 @@ urlpatterns = [
     url(r'^question/list', views.QuestionList.as_view(), name='question_list'),
     url(r'^statistic/list', views.StatisticsList.as_view(), name='statistics_list'),
     url(r'^course/list', views.CourseList.as_view(), name='course_list'),
-
-
-
 
 ]
