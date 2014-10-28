@@ -38,13 +38,13 @@ class Question(models.Model):
         (4, 'D)'),
     )
     thumbnail = models.ImageField(upload_to='media/question_imgs/', default='media/question_imgs/None/no-img.jpg', null=True)
-    question = models.TextField(max_length=250, help_text='Are you developer')
-    answer1 = models.TextField(max_length=200, help_text='YES')
-    answer2 = models.TextField(max_length=200, help_text='maybe')
-    answer3 = models.TextField(max_length=200, help_text='why?')
-    answer4 = models.TextField(max_length=200, help_text='Yes django music lol')
+    question = models.CharField(max_length=250, help_text='Are you developer')
+    answer1 = models.CharField(max_length=200, help_text='YES')
+    answer2 = models.CharField(max_length=200, help_text='maybe')
+    answer3 = models.CharField(max_length=200, help_text='why?')
+    answer4 = models.CharField(max_length=200, help_text='Yes django music lol')
     correct = models.IntegerField(choices=option_list, help_text='correct answer :p')
-    feedback = models.TextField(max_length=200, help_text='everythin')
+    feedback = models.CharField(max_length=200, help_text='everythin')
     theme = models.ForeignKey(Theme)
 
     def __unicode__(self):

@@ -18,6 +18,9 @@ urlpatterns = [
         r'(?P<username>\w{0,50})/'
         r'(?P<password>\w{0,50})/$', 'manager.views.user_info'),
 
+    url(r'^theme/get/'
+        r'(?P<pk>\w{0,50})/$', 'manager.views.theme_from_course'),
+
     url(r'^user/add/'
         r'(?P<username>\w{0,50})/'
         r'(?P<password>\w{0,50})/'
@@ -33,12 +36,17 @@ urlpatterns = [
         r'(?P<theme>\w{0,50})/'
         r'(?P<level>\w{0,50})/', 'manager.views.exam_theme_level'),
 
-    url(r'^exam/get/'
+    url(r'^random_exam/get/'
         r'(?P<level>\w{0,50})/', 'manager.views.exam_random'),
 
     url(r'^user_rank/get', 'manager.views.user_ranks'),
 
-    url(r'^feed/new', 'manager.views.feed_new'),
+    url(r'^feed/new/'
+        r'(?P<level>\w{0,50})/'
+        r'(?P<correct>\w{0,50})/'
+        r'(?P<wrongs>\w{0,50})/'
+        r'(?P<points>\w{0,50})/'
+        r'(?P<player>\w{0,50})$', 'manager.views.feed_new'),
 
 
     url(r'^theme/new', views.ThemeCreate.as_view(), name='theme_new'),

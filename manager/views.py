@@ -12,7 +12,9 @@ from django.shortcuts import render_to_response
 from .models import *
 from django.http import HttpResponse
 from django.core import serializers
-import datetime
+from datetime import datetime
+from django.utils import simplejson
+
 
 
 def themes(request):
@@ -52,10 +54,15 @@ def questions(request):
 
 
 def feed_new(request, level, correct, wrongs, points, player):
+    current_player = User.objects.get(id=player)
     data = Statistics(level=level, correct=correct, wrongs=wrongs,
-                      points=points, date=datetime.date.now(), player=player)
-    data.save()
-    json = serializers.serialize('json', data, indent=4)
+                      points=points, date=datetime.now(), player=current_player)
+    response_data = [{}]
+    if data.save():
+        response_data[0]['status'] = 0
+    else:
+        response_data[0]['status'] = 1
+    json = simplejson.dumps(response_data)
     return HttpResponse(json, mimetype='application/json')
 
 
@@ -76,6 +83,12 @@ def user_new(request, username, password, firstName, lastName, facebook, twitter
 
 def exam_theme_level(request, theme, level):
     data = Question.objects.filter(theme=theme).order_by('?')[:level]
+    json = serializers.serialize('json', data)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def theme_from_course(request, pk):
+    data = Theme.objects.filter(course=pk)
     json = serializers.serialize('json', data)
     return HttpResponse(json, mimetype='application/json')
 
