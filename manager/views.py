@@ -53,16 +53,25 @@ def questions(request):
 """
 
 
-def feed_new(request, level, correct, wrongs, points, player):
+def feed_new(request, level, correct, wrongs, points, player, course, theme):
     current_player = User.objects.get(id=player)
+    current_course = Course.objects.get(id=course)
+    current_theme = Theme.objects.get(id=theme)
     data = Statistics(level=level, correct=correct, wrongs=wrongs,
-                      points=points, date=datetime.now(), player=current_player)
+                      points=points, date=datetime.now(), player=current_player,
+                      course=current_course, theme=current_theme)
     response_data = [{}]
     if data.save():
         response_data[0]['status'] = 0
     else:
         response_data[0]['status'] = 1
     json = simplejson.dumps(response_data)
+    return HttpResponse(json, mimetype='application/json')
+
+
+def feed_by_user(request, player_key):
+    data = Statistics.objects.filter(player=player_key)
+    json = serializers.serialize('json', data)
     return HttpResponse(json, mimetype='application/json')
 
 
@@ -101,7 +110,8 @@ def exam_random(request, level):
 
 def user_ranks(request):
     data = User.objects.order_by('points')
-    json = serializers.serialize('json', data)
+    reverse = data.reverse()
+    json = serializers.serialize('json', reverse)
     return HttpResponse(json, mimetype='application/json')
 
 """

@@ -32,6 +32,9 @@ urlpatterns = [
 
     url(r'^user_rank/get', 'manager.views.user_ranks'),
 
+    url(r'^feed_by_user/get/'
+        r'(?P<player_key>\w{0,50})/$', 'manager.views.feed_by_user'),
+
     url(r'^exam/get/'
         r'(?P<theme>\w{0,50})/'
         r'(?P<level>\w{0,50})/', 'manager.views.exam_theme_level'),
@@ -46,7 +49,9 @@ urlpatterns = [
         r'(?P<correct>\w{0,50})/'
         r'(?P<wrongs>\w{0,50})/'
         r'(?P<points>\w{0,50})/'
-        r'(?P<player>\w{0,50})$', 'manager.views.feed_new'),
+        r'(?P<course>\w{0,50})/'
+        r'(?P<theme>\w{0,50})/'
+        r'(?P<player>\w{0,50})/$', 'manager.views.feed_new'),
 
 
     url(r'^theme/new', views.ThemeCreate.as_view(), name='theme_new'),

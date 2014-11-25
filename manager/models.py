@@ -74,6 +74,8 @@ class Statistics(models.Model):
     points = models.FloatField(help_text='number of points')
     date = models.DateField(help_text='date created')
     player = models.ForeignKey(User)
+    theme = models.ForeignKey(Theme)
+    course = models.ForeignKey(Course)
     unicode(date)
 
     def __unicode__(self):
